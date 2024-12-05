@@ -1,6 +1,6 @@
-dibentuk dengan npm 10.8.1, node 10.8.1, react 17.0.2
+dibentuk dengan npm 10.8.1, node v20.16.0, react 17.0.2
 
-instal node 10.8.1
+instal node v20.16.0
 
 instal npm 10.8.1
 
