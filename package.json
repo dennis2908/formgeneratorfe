@@ -1,9 +1,9 @@
 {
-  "name": "Project Admin",
+  "name": "Project Form Generator",
   "version": "3.2.1",
   "description": "DMD",
   "author": {
-    "name": "CoreUI",
+    "name": "formgeneratorfe",
     "url": "https://coreui.io",
     "github": "https://github.com/coreui",
     "twitter": "https://twitter.com/core_ui"
