@@ -150,7 +150,9 @@ async function MyfetchData() {
 		  setLoading(false)
           }
 		  //return
-		});	
+		}).catch((response) => {
+      setLoading(false)
+});	
 	
 }
 

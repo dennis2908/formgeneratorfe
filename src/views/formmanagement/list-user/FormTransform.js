@@ -75,7 +75,9 @@ async function MyfetchData() {
 		  //console.log(Datalist)
 	        }
 		  //return
-		});	
+		}).catch((response) => {
+      setLoading(false)
+});	
 	
     setLoading(false)
 }

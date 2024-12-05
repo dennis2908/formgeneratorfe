@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 //import { useHistory } from 'react-router-dom'
-import { primaryBadge,arrayRemove } from '../../genFunctions/genFunctions'
+import { primaryBadge } from '../../genFunctions/genFunctions'
 import { store } from '../../redux/store'
 import { connect } from 'react-redux'
 import {
@@ -72,26 +72,6 @@ const Users = ({match}) => {
     setModalData(!modalData);
 	//console.log(store.getState())
   }	
-  
-  async function EditDataJSON(formData) {
-	  let id = formData.id
-	  formData = arrayRemove(formData, "id");
-	  await fetch("https://sharingvision-backend.herokuapp.com/user/"+id, {
-		  method: "put",
-			headers: {
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(FormData)
-				}).then(res => res.json())
-			  .then(
-				(result) => {
-					
-					store.dispatch({ type: 'CHANGE_STATE', payload: { ShowHideAl:"d-block",Spinner:" ",AlertMsg:"Succeed Update Data"} })
-					MyfetchData();
-					
-			});	
-	}
 	
   async function SaveDataJSON(formData) {
 	  await fetch("http://localhost:9333/forms", {
@@ -116,12 +96,7 @@ const Users = ({match}) => {
  const SubmitForm = (e)=>{
 	store.dispatch({ type: 'CHANGE_STATE', payload: { Spinner:<CSpinner size="sm"/> } })
 		
-	if(FormData.id){
-		EditDataJSON(FormData)
-	}	
-		
-	else
-		SaveDataJSON(FormData)
+  SaveDataJSON(FormData)
 	
 	e.preventDefault();		
  }
@@ -140,8 +115,8 @@ const Users = ({match}) => {
     }
 	
 async function MyfetchData() {
-	await fetch("http://localhost:9333/forms/all/data")
-      .then(res => res.json())
+
+  await fetch("http://localhost:9333/forms/all/data").then(res => res.json())
       .then(
         (result) => {
           if(result){
@@ -151,9 +126,10 @@ async function MyfetchData() {
 		 
           }
 		  //return
-		});	
-    setLoading(false)
-	
+		}).catch((response) => {
+      setLoading(false)
+});	
+setLoading(false)
 }
 
 const toggleDelConf = ()=>{
